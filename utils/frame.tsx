@@ -11,7 +11,7 @@ const getImageUrl = (
   playerAddress: string,
   screen: SCREEN
 ) => {
-  return `${process.env.DOMAIN_URL}/frames/image?data=${encodeURIComponent(
+  return `${process.env.VERCEL_URL}/frames/image?data=${encodeURIComponent(
     JSON.stringify({ conversationId, playerAddress, screen })
   )}`;
 };

@@ -65,7 +65,7 @@ export async function generateImage(data: Data) {
           backgroundColor: "white",
         }}
       >
-        <img src={`${process.env.DOMAIN_URL}/${image}.png`} />
+        <img src={`${process.env.VERCEL_URL}/${image}.png`} />
         <div
           style={{
             display: "flex",
