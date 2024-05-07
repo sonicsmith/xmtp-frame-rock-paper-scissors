@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       ...nextFrameProps,
       // Passing the screen parameter to the frame generator so the
       // next action will be known to come from that screen
-      postUrl: `${process.env.VERCEL_URL}/frames?screen=${nextScreen}`,
+      postUrl: `${process.env.DOMAIN_URL}/frames?screen=${nextScreen}`,
     }),
     {
       status: 200,
