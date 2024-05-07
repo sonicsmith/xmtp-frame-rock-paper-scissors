@@ -79,6 +79,7 @@ export interface IFrameProps {
   imageAspectRatio?: "1.91:1" | "1:1";
 }
 
+
 export const getFrameMetaTags = ({
   frame,
   imageUrl,
@@ -97,19 +98,29 @@ export const getFrameMetaTags = ({
   }
 
   const metaTags: { [key: string]: string } = {};
+  // Version
   metaTags["fc:frame"] = frame ? frame : "vNext";
+  metaTags["of:version"] = frame ? frame : "vNext";
+  // Image
   metaTags["fc:frame:image"] = imageUrl;
+  metaTags["of:image"] = imageUrl;
   metaTags["og:image"] = imageUrl;
+
+  // Accepts XMTP
   metaTags["of:accepts:xmtp"] = "2024-02-01";
 
   if (buttons) {
     buttons.forEach((button, index) => {
       metaTags[`fc:frame:button:${index + 1}`] = button;
+      metaTags[`of:button:${index + 1}`] = button;
+      // metaTags[`of:button:${index + 1}:action`]
+      // metaTags[`of:button:${index + 1}:target`]
     });
   }
 
   if (textInput) {
     metaTags["fc:frame:input:text"] = textInput;
+    metaTags["of:input:text"] = textInput;
   }
 
   if (postUrl) {
@@ -123,6 +134,7 @@ export const getFrameMetaTags = ({
 
   if (imageAspectRatio) {
     metaTags["fc:frame:image:aspect_ratio"] = imageAspectRatio;
+    metaTags["of:image:aspect_ratio"] = imageAspectRatio;
   }
 
   return metaTags;
